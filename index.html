@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Drip Zine — coffee-shop recipes, scaled to your beans</title>
+<meta name="description" content="Hand-drip recipes from Japanese coffee shops and World Brewers Cup finalists. Enter your beans, get every pour and a timer that talks.">
+<meta name="theme-color" content="#fff9f2">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Inclusive+Sans:wght@400;700&family=JetBrains+Mono:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Playfair+Display:wght@400&family=Anton&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand display" href="#/">Drip Zine</a>
+    <nav class="mono">
+      <a class="navlink" href="#/log" data-ui="log">LOG</a>
+      <div class="seg lang" role="group" aria-label="Language">
+        <button data-lang="en">EN</button><button data-lang="ja">日本語</button><button data-lang="both">EN+JP</button>
+      </div>
+    </nav>
+  </div>
+</header>
+<main id="app" class="wrap"></main>
+<script type="module" src="app.js"></script>
+</body>
+</html>
