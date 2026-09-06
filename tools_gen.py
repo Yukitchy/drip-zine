@@ -116,7 +116,8 @@ for r in rs:
     dripJa=next((t for t in tags if t not in('hot','ice')),None)
     title=sm['title']; slug=SLUG.get(title) or slugify(title)
     assert slug not in seen,slug; seen.add(slug)
-    rec={'slug':slug,'title':{'en':T_TITLE.get(title,title),'ja':title},'author':{'en':T_AUTHOR.get(sm['author'],sm['author']),'ja':sm['author']},'shop':{'en':T_AUTHOR.get(sm['shopName'],sm['shopName']),'ja':sm['shopName']},
+    en_title=re.sub(r'(?<=\S)\(',' (',T_TITLE.get(title,title)).replace('HOT , ','HOT, ')
+    rec={'slug':slug,'title':{'en':en_title,'ja':title},'author':{'en':T_AUTHOR.get(sm['author'],sm['author']),'ja':sm['author']},'shop':{'en':T_AUTHOR.get(sm['shopName'],sm['shopName']),'ja':sm['shopName']},
     'desc':{'en':desc_en(r),'ja':sm['description']},'temp':'ice' if 'ice' in tags else 'hot','dripper':(T_DRIP.get(dripJa,dripJa) if dripJa else None),'recommended':sm['isRecommended'],'published':sm['firstPublishedAt'],
     'coffee':r['coffeeAmount'],'water':r['waterAmount'],'celsius':r['temperature'],'tempNote':{'en':T_TDESC.get(r['temperatureDescription'].strip(),''),'ja':r['temperatureDescription'].strip()},
     'grind':{'en':T_GRIND.get(r['grind'],r['grind']),'ja':r['grind']},'grindNote':{'en':T_GDESC.get(r['grindDescription'],r['grindDescription']),'ja':r['grindDescription']},'timed':r['isTimer'],
