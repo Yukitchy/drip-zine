@@ -95,9 +95,10 @@ function paintList() {
 function row(r) {
   const sc = scale(r, r.pours, r.coffee);
   return `<li><a class="row" href="#/r/${r.slug}">
-    <div class="row-top mono">${esc(r.dripper || '—')} · ${L(r.shop, null, true)}${r.recommended ? `<span class="tag">${t('pick')}</span>` : ''}</div>
+    <div class="row-top mono">${esc(r.dripper || (r.temp === 'ice' ? t('iced') : t('hot')))}${r.recommended ? `<span class="tag">${t('pick')}</span>` : ''}</div>
     <h3 class="display">${L(r.title)}</h3>
-    <div class="row-stats mono">${r.coffee} g → ${r.water} g · 1:${round1(r.water / r.coffee)} · ${r.celsius}°C${sc.total ? ` · ${fmt(sc.total)}` : ''}</div></a></li>`;
+    ${r.title.en.toLowerCase().startsWith(r.shop.en.toLowerCase()) ? '' : `<div class="row-shop">${L(r.shop, null, true)}</div>`}
+    <div class="row-stats mono"><b>${r.coffee} g → ${r.water} g</b><div class="meta"><span>1:${round1(r.water / r.coffee)}</span><span>${r.celsius}°C</span>${sc.total ? `<span>${fmt(sc.total)}</span>` : ''}</div></div></a></li>`;
 }
 function recentLog() {
   const l = logs().slice(0, 3);
